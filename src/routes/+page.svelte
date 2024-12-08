@@ -88,6 +88,7 @@
 			}
 		}
 	}
+  
 	///////
 
   let queryInput = ''; // To store the user input
