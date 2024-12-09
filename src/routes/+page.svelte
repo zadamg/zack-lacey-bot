@@ -279,7 +279,7 @@
       
 			<div class="c-formContainer contents">
         {#if mounted}
-        <form in:fade={{delay: 750, duration: 2000}} class="c-form relative" action="" autocomplete='off' id="form-container" on:pointerenter={handleMouseOver}  on:pointerleave={handleMouseOut} style="height: clamp(1em, 15%, 5em); width: clamp(18em, 80%, 50em); padding: 5px; ">
+        <form in:fade={{delay: 1750, duration: 3500}} class="c-form relative" action="" autocomplete='off' id="form-container" on:pointerenter={handleMouseOver}  on:pointerleave={handleMouseOut} style="height: clamp(1em, 15%, 5em); width: clamp(18em, 80%, 50em); padding: 5px; ">
           
           <input class="c-form__input" bind:this={inputElement} on:focus={handleFocus} title="queryInput" id="queryInput" bind:value={queryInput} on:focus={handleMouseOver} spellcheck="false" on:pointerenter={handleMouseOver} on:pointerdown={handleMouseOver}  style="font-size: clamp(1.35rem, 1.8vmax, 2.5rem); { wavy ? 'filter:url(#wavy); margin-right: 5px; margin-bottom: 15px; color: rgb(207, 12, 12, 0.0); ' : '' } "  placeholder="{ wavy ? '' : '...don\'t be shy...'}" type="website" required pattern="^((https?|ftp|smtp):\/\/)?(www.)?[a-z0-9]+\.[a-z]+(\/[a-zA-Z0-9#]+\/?)*$">
           <p class="absolute w-full h-fit p-6  text-{backgroundColor} {backgroundColor === 'black' ? 'visible' : 'invisible'} pointer-events-none" style="font-size: clamp(1.5rem, 1.9vmax, 4rem)">{queryInput}</p>
