@@ -6,8 +6,20 @@
 	// Most of your app wide CSS should be put in this file
 	import '../app.postcss';
 	import { Toaster } from 'svelte-french-toast'
+    import { Modal, modalStore } from '@skeletonlabs/skeleton';
+    import PBar from '../lib/components/PBar.svelte';
+    // Initialize your Skeleton stores if needed:
+    // (Not shown here, as initialization may differ in your setup)
+
+    // Define the component registry:
+    const modalComponentRegistry = {
+        followUpModalComponent: {
+            ref: PBar
+        }
+    };
 </script>
 
+<Modal components={modalComponentRegistry} />
 <Toaster />
 <slot />
 
