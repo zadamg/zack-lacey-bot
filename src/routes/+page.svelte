@@ -16,6 +16,12 @@
       window.scrollTo(0, 0);
       document.body.scrollTop = 0;
   }
+
+  function combinedFocus() {
+    handleFocus();
+    handleMouseOver2();
+  }
+
 	$: console.log(data)
 
   let backgroundColor = "white";
@@ -38,7 +44,12 @@
       restOfText: restOfText
     };
   }
+
+  // on mobile, the input raises the keyboard, which shifts the page up, so we need to scroll back to the top
+  
+
   async function handleHigherOracleClick(newPrompt: string) {
+      handleFocus();
       loading = true;
       message = '';
       handleMouseOver2();
@@ -46,13 +57,13 @@
       if (formContainer) formContainer.style.display = 'none';
 
       let messagesToSend: ChatMessage[] = [
-          { role: 'system', content: `You are a neutral, empathic relationship messenger...` }
+          { role: 'system', content: `You are a neutral, no-bullshit, straight-shooting relationship messenger and comminucator who uses specific examples, dates, and so on to answer questions concisely...` }
       ];
       for (const c of conversation) {
           messagesToSend.push(c);
       }
 
-      const userPrompt = `You are a neutral, no fucking bullshit messenger. The user is asking about the relationship between Zack & Lacey, which is complex and nuanced: "${queryInput}". Provide an honest, empathetic, and balanced response. Consider both perspectives and avoid taking sides. The tone should be kind, understanding, and supportive but also direct and straight to the point.  Keep it to 4 sentences max. Do not mention that you are an AI or break character and do not begin with a quotation mark for parsing purposes. NEVER mention disorders like NPD or BPD because this can be triggering, even if it looks like it's present in the details. DO NOT BE WORDY! Talk like you're conversing and be straight to the point, use specific details/specifics, and don't be too descriptive.. again, we want concise, to-the-point answers here that use specifics and precise details. DO NOT BE VAGUE!!!!  Here is a bunch of information about Zack & Lacey's relationship: \n\n ${relationshipDetails} \n\n Make sure to only answer what's asked. For example, if the question is something simple like, "What date did this happen?" then just answer that question; DON'T add more than necessary! If the question is more complex, then you can provide a more detailed response. In all responses, please be specific (I've said this multiple times so it's important); give specific examples for complex or nuanced questions. Keep in mind that the person asking the question is a 3rd party, not lacey or zack themselves. Also, don't sugar coat anything and you can use foul fucking language - don't be scared, especially if the input has foul language and you need to repeat it to answer the question. Be conversational in a direct and precise way. Remember to give an exmample or two! If you're able to reference specific dates or events or , that would be great. If you can't, that's okay too. Just be as specific as you can. If you don't know the answer to a question, don't make it up, just say you don't know`; 
+      const userPrompt = `The user is asking about the relationship between Zack & Lacey: "${queryInput}". Provide an honest, empathetic, and balanced response. Consider both perspectives and avoid taking sides. The tone should be kind, understanding, and supportive but also direct and straight to the point.  Keep it to 4 sentences max. Do not mention that you are an AI or break character and do not begin with a quotation mark for parsing purposes. NEVER mention disorders like NPD or BPD because this can be triggering, even if it looks like it's present in the details. DO NOT BE WORDY! Talk like you're conversing and be straight to the point, use specific details/specifics, and don't be too descriptive.. again, we want concise, to-the-point answers here that use specifics and precise details. DO NOT BE VAGUE!!!!  Here is a bunch of information about Zack & Lacey's relationship: \n\n ${relationshipDetails} \n\n Make sure to only answer what's asked. For example, if the question is something simple like, "What date did this happen?" then just answer that question; DON'T add more than necessary! If the question is more complex, then you can provide a more detailed response. In all responses, please be specific (I've said this multiple times so it's important); give specific examples for complex or nuanced questions. Keep in mind that the person asking the question is a 3rd party, not lacey or zack themselves. Also, don't sugar coat anything and you can use foul fucking language - don't be scared, especially if the input has foul language and you need to repeat it to answer the question. Be conversational in a direct and precise way. Remember to give an exmample or two! If you're able to reference specific dates or events or , that would be great. If you can't, that's okay too. Just be as specific as you can. If you don't know the answer to a question, don't make it up, just say you don't know`; 
 
       messagesToSend.push({ role: 'user', content: userPrompt });
 
@@ -247,7 +258,7 @@
     mounted = true;
   });
 </script>
-<div  class="biggie w-full h-auto overflow-auto !bg-{backgroundColor}" style="background: {backgroundColor} !important">
+<div  class="biggie fixed w-full h-auto overflow-auto !bg-{backgroundColor}" style="background: {backgroundColor} !important">
 	<div  id="boxie" style="border: clamp(1rem, 1.5vw, 65rem) solid {foregroundColor}"on:focus={handleMouseOver}
   on:blur={handleMouseOut}
   on:pointerenter={handleMouseOver} 
