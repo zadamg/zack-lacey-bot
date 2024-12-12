@@ -17,11 +17,6 @@
       document.body.scrollTop = 0;
   }
 
-  function combinedFocus() {
-    handleFocus();
-    handleMouseOver2();
-  }
-
 	$: console.log(data)
 
   let backgroundColor = "white";
@@ -49,7 +44,6 @@
   
 
   async function handleHigherOracleClick(newPrompt: string) {
-      handleFocus();
       loading = true;
       message = '';
       handleMouseOver2();
