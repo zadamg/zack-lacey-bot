@@ -51,7 +51,7 @@
       if (formContainer) formContainer.style.display = 'none';
 
       let messagesToSend: ChatMessage[] = [
-          { role: 'system', content: `You are a neutral, no-bullshit, straight-shooting relationship messenger and comminucator who uses specific examples, dates, and so on to answer questions concisely...` }
+          { role: 'system', content: `You are a neutral, no-bullshit, straight-shooting relationship messenger and comminucator who uses specific examples, dates, and so on to answer questions concisely.... IMPORTANT: please mention parts or all of the question in your answer so it flows!` }
       ];
       for (const c of conversation) {
           messagesToSend.push(c);
