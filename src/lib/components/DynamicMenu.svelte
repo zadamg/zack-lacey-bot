@@ -24,9 +24,11 @@
             {item}
         </div>
     {/each}
+    
 </div>
 
 <style>
+
         .sleek-under {
             text-decoration: underline 0.15em rgba(0, 0, 0, 0.1) ;
             text-decoration-thickness: 1px ;
